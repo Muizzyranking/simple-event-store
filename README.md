@@ -159,7 +159,7 @@ The in-memory index stores exactly two numbers per event: the byte offset where 
 
 ## Recovery screenshot
 
-![Recovery log screenshot](./screenshots/recovery.png)
+![Recovery log screenshot](./docs/screenshots/recovery.png)
 
 ---
 
@@ -194,6 +194,6 @@ The in-memory index stores exactly two numbers per event: the byte offset where 
 
 ## Why this made me a better backend developer
 
-It also gave me a real understanding of why indexing matters. Without the in-memory index, every GET /events/:id would read the entire file from top to bottom looking for a match. Imagine an ID that doesn't exist and you have hundreds of thousands of records — you would wait for the entire file to be scanned and still get a 404 at the end. The index makes that O(1) regardless of how large the log grows.
+This project gave me a real understanding of why indexing matters. Without the in-memory index, every GET /events/:id would read the entire file from top to bottom looking for a match. Imagine an ID that doesn't exist and you have hundreds of thousands of records, we would wait for the entire file to be scanned and still get a 404 at the end. The index makes that O(1) regardless of how large the log grows.
 
-The trade-off is real though: the index lives in memory, and on startup the entire log has to be replayed to rebuild it. On a huge log file that startup time grows, and the index itself consumes memory proportional to the number of events. But it is absolutely worth it — slow startup once is far better than slow reads on every single request forever.
+The trade-off is real though: the index lives in memory, and on startup the entire log has to be replayed to rebuild it. On a huge log file that startup time grows, and the index itself consumes memory proportional to the number of events. But I belive it's worth it, slow startup once is far better than slow reads on every single request forever.

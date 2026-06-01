@@ -159,7 +159,7 @@ The in-memory index stores exactly two numbers per event: the byte offset where 
 
 ## Recovery screenshot
 
-![Recovery log screenshot](./docs/screenshots/recovery.png)
+![Recovery log screenshot](./doc/screenshots/recovery.png)
 
 ---
 

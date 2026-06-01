@@ -163,7 +163,7 @@ The in-memory index stores exactly two numbers per event: the byte offset where 
 
 ---
 
-## What you struggled with
+## What I struggled with
 
 - The first thing that tripped me up was the byte offset tracking. I knew I needed to record where in the file each event lived, but I wasn't immediately sure how to get that position before writing. I eventually found f.tell(), it returns the current stream position in bytes, so I call it right before the write, and that number becomes the offset I store in the index. Simple in hindsight, but it took me a moment to find the right tool.
 
@@ -171,7 +171,7 @@ The in-memory index stores exactly two numbers per event: the byte offset where 
 
 ---
 
-## What you learned
+## What I learned
 
 - The biggest thing was understanding why indexing matters at a fundamental level. Without an index, GET /events/:id would have to scan events.log from the top every time whihc is O(n), getting slower as the log file grows. With the in-memory index storing just two numbers per event (offset and length), every read is a direct seek to the right byte position making it O(1), regardless of how large the file gets. This felt like solveing a DSA problem.
 

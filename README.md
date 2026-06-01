@@ -10,8 +10,8 @@ A small HTTP service that stores events in an append-only log file and reads the
 
 ```bash
 # 1. Clone and enter the repo
-git clone <your-repo-url>
-cd event-store
+git clone https://github.com/Muizzyranking/simple-event-store
+cd simple-event-store
 
 # 2. Install dependencies
 uv sync
